@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+// Função recursiva para Torre
+void moverTorre(int casas) {
+    if (casas <= 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
+
+// Função recursiva para Bispo com loops aninhados
+void moverBispo(int linhas, int colunas) {
+    if (linhas <= 0 || colunas <= 0) return;
+
+    printf("Movimento detalhado do Bispo (loop aninhado):\n");
+    for (int i = 1; i <= linhas; i++) {
+        for (int j = 1; j <= colunas; j++) {
+            printf("Cima Direita\n");
+        }
+    }
+
+    printf("\nMovimento do Bispo (recursivo):\n");
+    if (linhas > 0 && colunas > 0) {
+        printf("Cima Direita\n");
+        moverBispo(linhas - 1, colunas - 1);
+    }
+}
+
+// Função recursiva para Rainha
+void moverRainha(int casas) {
+    if (casas <= 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// Movimento complexo do Cavalo com loops aninhados
+// Duas casas para cima, uma para a direita
+
+void moverCavalo() {
+    int movimentos_verticais = 2;
+    int movimentos_horizontais = 1;
+
+    printf("Movimento do Cavalo:\n");
+
+    for (int i = 1; i <= movimentos_verticais; i++) {
+        if (i == 2) {
+            for (int j = 1; j <= movimentos_horizontais; j++) {
+                if (j > 1) continue; // Nunca será o caso aqui, mas demonstra o uso
+                printf("Direita\n");
+                break; // Sai do loop interno após o movimento para a direita
+            }
+        }
+        printf("Cima\n");
+    }
+}
+
+// Função principal
+int main() {
+
+    // Movimento da Torre - Recursivo
+    printf("Movimento da Torre:\n");
+    moverTorre(5);
+
+
+    // Movimento do Bispo - Recursivo + Loops Aninhados
+    printf("\nMovimento do Bispo:\n");
+    moverBispo(1, 5);  // Move na diagonal cima-direita 5 vezes
+
+    // Movimento da Rainha - Recursivo
+    printf("\nMovimento da Rainha:\n");
+    moverRainha(8);
+
+
+    // Movimento do Cavalo - Loops Complexos
+
+    printf("\n");
+    moverCavalo();
+
+    return 0;
+}
